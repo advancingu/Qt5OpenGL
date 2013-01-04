@@ -1,0 +1,5 @@
+This is an example of using OpenGL vertex and fragment shaders with the new OpenGL features of Qt5.
+
+Shaders are based on GLSL 1.30 for compatibility with Intel's open source Linux drivers.
+
+The code is based on Dr. Sean Harmer's talk "OpenGL with Qt 5" given at Qt Developer Days 2012. The presentation can be viewed here: https://www.youtube.com/watch?v=GYa5DLV6ADQ
