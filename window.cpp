@@ -50,6 +50,7 @@ void Window::initializeGl()
 
 void Window::paintGl()
 {
+    if( !isExposed() ) return;
     mContext->makeCurrent(this);
     mScene->render();
     mContext->swapBuffers(this);
