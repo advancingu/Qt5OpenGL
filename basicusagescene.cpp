@@ -1,5 +1,7 @@
 #include "basicusagescene.h"
 
+#include "glassert.h"
+
 #include <QObject>
 #include <QOpenGLContext>
 
@@ -23,17 +25,17 @@ void BasicUsageScene::update(float t)
 
 void BasicUsageScene::render()
 {
-    glClear(GL_COLOR_BUFFER_BIT);
+    glAssert( glClear(GL_COLOR_BUFFER_BIT) );
 
     mShaderProgram.bind();
     mVAO.bind();
 
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glAssert( glDrawArrays(GL_TRIANGLES, 0, 3) );
 }
 
 void BasicUsageScene::resize(int width, int height)
 {
-    glViewport(0, 0, width, height);
+    glAssert( glViewport(0, 0, width, height) );
 }
 
 void BasicUsageScene::prepareShaderProgram()
@@ -50,6 +52,7 @@ void BasicUsageScene::prepareShaderProgram()
     {
         qCritical() << "error";
     }
+    glCheckError();
 }
 
 void BasicUsageScene::prepareVertexBuffers()
@@ -87,4 +90,5 @@ void BasicUsageScene::prepareVertexBuffers()
     mVertexColorBuffer.bind();
     mShaderProgram.enableAttributeArray("vertexColor");
     mShaderProgram.setAttributeBuffer("vertexColor", GL_FLOAT, 0, 3);
+    glCheckError();
 }

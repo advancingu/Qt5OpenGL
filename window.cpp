@@ -1,6 +1,7 @@
 #include "window.h"
 
 #include "basicusagescene.h"
+#include "glassert.h"
 
 #include <iostream>
 #include <QOpenGLContext>
@@ -8,6 +9,7 @@
 
 static void infoGL()
 {
+    glCheckError();
     const GLubyte *str;
     std::cout << "OpenGL infos with gl functions" << std::endl;
     str = glGetString(GL_RENDERER);
@@ -18,6 +20,7 @@ static void infoGL()
     std::cout << "OpenGL Version : " << str << std::endl;
     str = glGetString(GL_SHADING_LANGUAGE_VERSION);
     std::cout << "GLSL Version : " << str << std::endl;
+    glCheckError();
 }
 
 Window::Window(QScreen *screen) :

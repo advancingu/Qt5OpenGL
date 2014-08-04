@@ -19,7 +19,8 @@ SOURCES += main.cpp \
 HEADERS += \
     window.h \
     abstractscene.h \
-    basicusagescene.h
+    basicusagescene.h \
+    glassert.h
 
 OTHER_FILES += \
     Shaders/phong.vert \
@@ -29,3 +30,5 @@ OTHER_FILES += \
 
 RESOURCES += \
     resources.qrc
+
+LIBS += -lGLU
