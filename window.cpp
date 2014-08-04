@@ -2,8 +2,23 @@
 
 #include "basicusagescene.h"
 
+#include <iostream>
 #include <QOpenGLContext>
 #include <QTimer>
+
+static void infoGL()
+{
+    const GLubyte *str;
+    std::cout << "OpenGL infos with gl functions" << std::endl;
+    str = glGetString(GL_RENDERER);
+    std::cout << "Renderer : " << str << std::endl;
+    str = glGetString(GL_VENDOR);
+    std::cout << "Vendor : " << str << std::endl;
+    str = glGetString(GL_VERSION);
+    std::cout << "OpenGL Version : " << str << std::endl;
+    str = glGetString(GL_SHADING_LANGUAGE_VERSION);
+    std::cout << "GLSL Version : " << str << std::endl;
+}
 
 Window::Window(QScreen *screen) :
     QWindow(screen),
@@ -26,6 +41,8 @@ Window::Window(QScreen *screen) :
     mContext->create();
 
     mScene->setContext(mContext);
+
+    printContextInfos();
     initializeGl();
 
     resize(QSize(800, 450));
@@ -40,6 +57,23 @@ Window::Window(QScreen *screen) :
 
 Window::~Window()
 {
+}
+
+void Window::printContextInfos()
+{
+    if(!mContext->isValid())
+        std::cerr << "The OpenGL context is invalid!" << std::endl;
+
+    mContext->makeCurrent(this);
+
+    std::cout << "Window format version is: "
+              << format().majorVersion() << "."
+              << format().minorVersion() << std::endl;
+
+    std::cout << "Context format version is: "
+              << mContext->format().majorVersion()
+              << "." << mContext->format().minorVersion() << std::endl;
+    infoGL();
 }
 
 void Window::initializeGl()

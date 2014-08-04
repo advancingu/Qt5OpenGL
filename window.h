@@ -24,6 +24,8 @@ protected slots:
     void updateScene();
 
 private:
+    void printContextInfos();
+
     QOpenGLContext *mContext;
     QScopedPointer<AbstractScene> mScene;
     
