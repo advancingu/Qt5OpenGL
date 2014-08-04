@@ -6,7 +6,8 @@ class QOpenGLContext;
 class AbstractScene
 {
 public:
-    AbstractScene() {}
+    AbstractScene() : mContext(0) {}
+    virtual ~AbstractScene(){}
 
     void setContext(QOpenGLContext *context) { mContext = context; }
     QOpenGLContext* context() const { return mContext; }
