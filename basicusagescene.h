@@ -4,6 +4,7 @@
 #include "abstractscene.h"
 
 #include <QOpenGLShaderProgram>
+#include <QOpenGLVertexArrayObject>
 #include <QOpenGLBuffer>
 
 class BasicUsageScene : public AbstractScene
@@ -18,6 +19,7 @@ public:
 
 private:
     QOpenGLShaderProgram mShaderProgram;
+    QOpenGLVertexArrayObject mVAO;
     QOpenGLBuffer mVertexPositionBuffer;
     QOpenGLBuffer mVertexColorBuffer;
 

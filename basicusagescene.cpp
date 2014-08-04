@@ -26,6 +26,7 @@ void BasicUsageScene::render()
     glClear(GL_COLOR_BUFFER_BIT);
 
     mShaderProgram.bind();
+    mVAO.bind();
 
     glDrawArrays(GL_TRIANGLES, 0, 3);
 }
@@ -63,6 +64,9 @@ void BasicUsageScene::prepareVertexBuffers()
         0.0f, 1.0f, 0.0f,
         0.0f, 0.0f, 1.0f
     };
+
+    mVAO.create();
+    mVAO.bind();
 
     mVertexPositionBuffer.create();
     mVertexPositionBuffer.setUsagePattern(QOpenGLBuffer::StaticDraw);
