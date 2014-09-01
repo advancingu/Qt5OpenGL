@@ -30,6 +30,3 @@ OTHER_FILES += \
 
 RESOURCES += \
     resources.qrc
-
-unix:LIBS += -lGLU
-win32:LIBS += -lglu32
