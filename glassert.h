@@ -5,8 +5,6 @@
  * OpenGL error management class.
  */
 
-#include <GL/glu.h>
-
 #ifndef NDEBUG // debug mode
 
     #include <iostream>
@@ -23,7 +21,7 @@
     {\
         GLuint err = glGetError(); \
         if (err != GL_NO_ERROR) { \
-            std::cerr<<"OpenGL error("<<__FILE__<<":"<<__LINE__<<", "<<__TO_STR(code)<<") : "<<(const char*)gluErrorString(err)<<"("<<err<<")"<<std::endl; \
+            std::cerr<<"OpenGL error("<<__FILE__<<":"<<__LINE__<<", "<<__TO_STR(code)<<") : "<<"code("<<err<<")"<<std::endl; \
             assert(false); \
         } \
     }
@@ -33,7 +31,7 @@
     {\
         GLuint err = glGetError(); \
         if (err != GL_NO_ERROR) { \
-            std::cerr<<"OpenGL error("<<__FILE__<<":"<<__LINE__<<") : "<<(const char*)gluErrorString(err)<<"("<<err<<")"<<std::endl; \
+            std::cerr<<"OpenGL error("<<__FILE__<<":"<<__LINE__<<") : "<<"code("<<err<<")"<<std::endl; \
             assert(false); \
         } \
     }
